@@ -13,11 +13,11 @@ RUN npm run build
 EXPOSE 8000
 
 # Production build stage
-FROM base as product-build
+FROM node:14.14.0-alpine3.12 as production-build
 COPY package*.json ./
 RUN npm install --only=production
 
-COPY --from=base /app/build/  ./
+COPY --from=0 /app/build/  ./build/
 
 ENV NODE_ENV production
 RUN npm ci --only=production
