@@ -11,9 +11,10 @@ services:
     networks:
       - backend
 
-  backend:
+  backend-service:
     build: 
       context: ./backend
+    container_name: backend-service
     command: uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
     volumes:
       - ./backend:/app/
@@ -27,10 +28,11 @@ services:
     networks:
       - frontend
       - backend
-  frontend:
+  frontend-service:
       build: 
         context: ./frontend
         target: base
+      container_name: frontend-service
       volumes:
         - ./frontend:/app/
       ports:
