@@ -2,13 +2,13 @@ FROM node:12-alpine AS base
 
 WORKDIR /app
 COPY package*.json ./
-RUN NODE_ENV=dev npm install
+RUN NODE_ENV=dev yarn
 COPY . /app
 
-CMD ["npm", "run", "serve"]
+CMD ["yarn", "serve"]
 
 FROM base as build
-RUN npm run build
+RUN yarn build
 
 # Make final image
 FROM nginx:1.13.12-alpine as production
