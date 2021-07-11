@@ -1,8 +1,9 @@
 FROM node:12-alpine AS base
 
 WORKDIR /app
-COPY package*.json ./
-RUN NODE_ENV=dev yarn
+COPY package*.json yarn.lock ./
+
+RUN NODE_ENV=dev yarn 
 COPY . /app
 
 CMD ["yarn", "serve"]
