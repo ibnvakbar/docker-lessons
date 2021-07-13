@@ -12,14 +12,13 @@ RUN npm run build
 
 EXPOSE 8000
 
-# Production build stage
+# instructions for production build 
 FROM node:14.14.0-alpine3.12 as production-build
+ENV NODE_ENV production
+
 COPY package*.json ./
 RUN npm install --only=production
 
 COPY --from=0 /app/build/  ./build/
-
-ENV NODE_ENV production
-RUN npm ci --only=production
 
 CMD ["npm", "run", "start"]
