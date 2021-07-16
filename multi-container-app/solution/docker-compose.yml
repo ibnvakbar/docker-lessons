@@ -31,8 +31,6 @@ services:
       build: 
         context: ./frontend
       container_name: frontend-service
-      volumes:
-        - ./frontend:/app/
       ports:
         - 8080:80
       networks:
