@@ -1,11 +1,5 @@
 # How to run
 
-- Configure `tier.app` hostname 
-
-``` 
-echo "127.0.0.1  tier.app localhost" | sudo tee -a /etc/hosts
-
-```
 - Create `.env` file at the root folder with this content
 
 ```
