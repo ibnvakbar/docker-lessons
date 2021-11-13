@@ -62,7 +62,7 @@ export default {
       if (this.$v.$invalid) {
         return;
       }
-      const base_url = "http://localhost:8000";
+      const base_url = `${this.getBaseUrl()}:8000`;
       axios
         .post(
           `${base_url}/api/urls`,
@@ -79,6 +79,9 @@ export default {
           console.log(err);
         });
     },
+    getBaseUrl(){
+      return process.env.DOMAIN_NAME? process.env.DOMAIN_NAME: `${window.location.protocol}//${window.location.hostname}`
+    }
   },
 };
 </script>
