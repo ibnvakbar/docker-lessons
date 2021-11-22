@@ -11,7 +11,7 @@ services:
   app:
     image: abiodunjames/shorturl-backend:latest
     ports:
-      - 8000:8000
+      - 3000:3000
     environment:
       - DATABASE_URI=postgresql://user:password@db/linkapp
     depends_on: 

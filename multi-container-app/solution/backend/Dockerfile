@@ -14,10 +14,10 @@ RUN pip install --upgrade pip && \
 # Add source code
 COPY . /app
 
-EXPOSE 8000
+EXPOSE 3000
 
 RUN useradd -M appuser
 RUN chmod a+w /app
 USER appuser
 
-CMD [ "sh", "-c", "uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000" ]
+CMD [ "sh", "-c", "uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 3000" ]

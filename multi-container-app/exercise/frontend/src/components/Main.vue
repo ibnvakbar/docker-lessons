@@ -62,7 +62,7 @@ export default {
       if (this.$v.$invalid) {
         return;
       }
-      const base_url = `${this.getBaseUrl()}:8000`;
+      const base_url = `${this.getBaseUrl()}:3000`;
       axios
         .post(
           `${base_url}/api/urls`,

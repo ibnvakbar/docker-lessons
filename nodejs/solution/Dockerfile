@@ -10,7 +10,7 @@ COPY . .
 
 RUN npm run build
 
-EXPOSE 8000
+EXPOSE 3000
 
 # instructions for production build 
 FROM node:14.14.0-alpine3.12 as production-build
