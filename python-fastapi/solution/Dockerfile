@@ -1,16 +1,21 @@
-FROM python:3.7
+FROM python:3.9-slim
 
 WORKDIR /app
 
-COPY requirements.txt ./
-RUN RUN pip install --upgrade pip && \
+# copy requirements.txt file
+COPY requirements.txt .
+
+# Install app dependencies
+RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
-EXPOSE 3000
-COPY ./src ./src
+# Add source code
+COPY . .
 
-RUN useradd -M appuser
-RUN chmod a+w /app
+EXPOSE 3000
+
+# Create user to run the container process.
+RUN useradd -M appuser && chmod a+w /app
 USER appuser
 
-CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "3000"]
+CMD [ "sh", "-c", "uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 3000" ]
