@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  mockServer:
+    image: jordimartin/mmock:latest
+    ports:
+      - 8082:8082
+      - 8083:8083
+
+# How to run
+# docker-compose -f docker-compose.yml -f docker-compose.ci.yml up -d

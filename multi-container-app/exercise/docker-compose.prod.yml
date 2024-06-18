@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  redis:
+    image: redis
+    container_name: cache
+    expose:
+      - 6379
+
+# How to run 
+# docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
